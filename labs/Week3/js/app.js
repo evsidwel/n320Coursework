@@ -68,8 +68,10 @@ class Box {
 
 var ballOne = new Ball(100); // Create a new instance of the Ball class called ball at yPosition 100
 var ballTwo = new Ball(200); // Create a new instance of the Ball class called ballTwo at yPosition 200
-World.boxes.push(new Box(100));
-World.boxes.push(new Box(300));
+var boxOne = new Box(100);
+var boxTwo = new Box(300);
+World.boxes.push(boxOne);
+World.boxes.push(boxTwo);
 
 function setup() {
   // P5 application essential
@@ -81,4 +83,6 @@ function draw() {
   background(World.bgcolor);
   ballOne.update();
   ballTwo.update();
+  boxOne.update();
+  boxTwo.update();
 }
