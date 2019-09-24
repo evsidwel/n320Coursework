@@ -22,7 +22,7 @@ class Ball {
 
     // If the ball is beyon the x upper and lower bounds: call the ballBeyond method and passes the current instance of ball to it.
     if (this.position.x < 0 || this.position.x > 400) {
-      World.ballBeyond(this);
+      World.ballBeyond(this, box);
     }
   }
 }
