@@ -22,7 +22,7 @@ class Ball {
 
     // If the ball is beyon the x upper and lower bounds: call the ballBeyond method and passes the current instance of ball to it.
     if (this.position.x < 0 || this.position.x > 400) {
-      World.ballBeyond(this, box);
+      World.ballBeyond(this);
     }
   }
 }
@@ -33,19 +33,24 @@ var World = {
   // Sets the background color in rbg.
   bgcolor: [237, 119, 83],
 
+  // array to hold boxes
+  boxes: [],
+
   // Defines the ballBeyond method which accepts a ball input.
-  ballBeyond: function(whichBall, whichBox) {
+  ballBeyond: function(whichBall) {
     // Changes the background color when this funtion is called.
     this.bgcolor = [Math.random() * 255, Math.random() * 255, 83];
     // Resets the passed ball's x position
     whichBall.position.x = 100;
     // Resets the passed ball's x velocity
     whichBall.velocity.x = (Math.random() - 0.5) * 20;
-    // Increases the size of the Box
-    if (whichBox.size >= 300) {
-      whichBox.size = 20;
-    } else {
-      whichBox.size++;
+    // Increases the size of the Boxes
+    for (i = 0; i < boxes.length; i++) {
+      if (this.boxes[i].size >= 100) {
+        this.boxes[i].size = 20;
+      } else {
+        this.boxes[i].size = whichBox.size + 5;
+      }
     }
   }
 };
@@ -53,8 +58,8 @@ var World = {
 //class for a box
 //Grows in size every time a ball hits an edge and is reset
 class Box {
-  constructor() {
-    this.position = { x: 200, y: 150 };
+  constructor(xPos) {
+    this.position = { x: xPos, y: 150 };
     this.size = 20;
   }
   update() {
@@ -67,7 +72,8 @@ class Box {
 
 var ballOne = new Ball(100); // Create a new instance of the Ball class called ball at yPosition 100
 var ballTwo = new Ball(200); // Create a new instance of the Ball class called ballTwo at yPosition 200
-var box = new Box();
+World.boxes.push(new Box(100));
+World.boxes.push(new Box(300));
 
 function setup() {
   // P5 application essential
