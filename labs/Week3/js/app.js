@@ -49,7 +49,7 @@ var World = {
       if (this.boxes[i].size >= 100) {
         this.boxes[i].size = 20;
       } else {
-        this.boxes[i].size = whichBox.size + 5;
+        this.boxes[i].size = this.boxes[i].size + 5;
       }
     }
   }
