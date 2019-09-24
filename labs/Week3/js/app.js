@@ -46,9 +46,12 @@ var World = {
 
 //class for a box
 //Grows in size every time a ball hits an edge and is reset
+class Box {}
+
 // "For fun": multiple balls
 
 var ball = new Ball(); // Create a new instance of the Ball class called ball
+var ball2 = new Ball();
 
 function setup() {
   // P5 application essential
