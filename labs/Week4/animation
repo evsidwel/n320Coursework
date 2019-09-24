@@ -1,0 +1,106 @@
+CSS -----
+.card {
+  opacity: 0;
+  border: 1px solid #999;
+  border-radius: 4px;
+  width: 40px;
+  height: 50px;
+  margin: 2px;
+  padding: 1px;
+  animation: cardBuildIn .7s;
+  animation-fill-mode: both;
+}
+
+
+
+.cardOver {
+  animation: cardOverAnim .7s;
+  animation-fill-mode: both;
+}
+
+.cardOut {
+  animation: cardOutAnim .7s;
+  animation-fill-mode: both;
+}
+
+#theplace {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+@keyframes cardBuildIn {
+  from {
+    opacity: 0;
+    transform: scale(.2) rotateZ(130deg) rotateX(130deg);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cardOverAnim {
+  to {
+    opacity: 1;
+    background-color: #FF0;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes cardOutAnim {
+  from {
+    opacity: 1;
+    transform: scale(1.2);
+    background-color: #FFFF00;
+  }
+  
+  to {
+    opacity: 1;
+    transform: scale(1);
+    background-color: #FFF;
+  }
+}
+
+HTML -----
+<div id="theplace"></div>
+
+JS -----
+var theplace = document.querySelector("#theplace");
+var cardTemplate = document.querySelector("#cardTemplate");
+
+var suits = [ "🍷", "🎱", "🌆", "🎁" ];
+var values = [ "A", "1", "2", "3" ];
+
+var i = 0;
+suits.forEach( (suit) => {
+  values.forEach( (value) => {
+    //We know we have a specific combination of suit + value
+    
+    //create and customize the element
+    let newCard = document.createElement("div");
+    newCard.innerHTML = value + " " + suit;
+    newCard.classList.add("card");
+    newCard.style.animationDelay = i*.1 + "s";
+    
+    
+    //set up connections and events
+    newCard.addEventListener("mouseover", onCardOver);
+    newCard.addEventListener("mouseout", onCardOut);
+    
+    //put onto the page
+    theplace.appendChild(newCard);
+    
+    i++;
+    
+  })
+})
+
+function onCardOver(event) {
+  event.target.style.animationDelay = "0s";
+  event.target.classList.add("cardOver");
+  event.target.classList.remove("cardOut");
+}
+
+function onCardOut(event) {
+  event.target.classList.add("cardOut");
+  event.target.classList.remove("cardOver");
+}
