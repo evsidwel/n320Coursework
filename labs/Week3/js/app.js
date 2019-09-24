@@ -4,9 +4,9 @@ class Ball {
   constructor(ypos) {
     // The Constructor.
     // Defines the position attribute.
-    this.position = { x: 100, y: 100 };
+    this.position = { x: 100, y: ypos };
     // Defines the velocity attribute.
-    this.velocity = { x: 10, y: ypos };
+    this.velocity = { x: 10, y: 0 };
   }
 
   update() {
@@ -51,7 +51,7 @@ class Box {}
 // "For fun": multiple balls
 
 var ball = new Ball(100); // Create a new instance of the Ball class called ball
-var ball2 = new Ball(200);
+var ballTwo = new Ball(200);
 
 function setup() {
   // P5 application essential
@@ -62,5 +62,5 @@ function draw() {
   // P5 application essential
   background(World.bgcolor);
   ball.update();
-  ball2.update();
+  ballTwo.update();
 }
