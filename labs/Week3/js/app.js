@@ -1,10 +1,10 @@
 class Ball {
   //Creates a class "Ball". The ball uses the module pattern. Allows multiple instances of this ball class.
 
-  constructor(ypos) {
+  constructor(yPos) {
     // The Constructor.
     // Defines the position attribute.
-    this.position = { x: 100, y: ypos };
+    this.position = { x: 100, y: yPos };
     // Defines the velocity attribute.
     this.velocity = { x: 10, y: 0 };
   }
