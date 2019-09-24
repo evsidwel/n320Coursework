@@ -1,12 +1,12 @@
 class Ball {
   //Creates a class "Ball". The ball uses the module pattern. Allows multiple instances of this ball class.
 
-  constructor() {
+  constructor(ypos) {
     // The Constructor.
     // Defines the position attribute.
     this.position = { x: 100, y: 100 };
     // Defines the velocity attribute.
-    this.velocity = { x: 10, y: 0 };
+    this.velocity = { x: 10, y: ypos };
   }
 
   update() {
@@ -50,8 +50,8 @@ class Box {}
 
 // "For fun": multiple balls
 
-var ball = new Ball(); // Create a new instance of the Ball class called ball
-var ball2 = new Ball();
+var ball = new Ball(100); // Create a new instance of the Ball class called ball
+var ball2 = new Ball(200);
 
 function setup() {
   // P5 application essential
@@ -62,4 +62,5 @@ function draw() {
   // P5 application essential
   background(World.bgcolor);
   ball.update();
+  ball2.update();
 }
