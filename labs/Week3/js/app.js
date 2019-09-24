@@ -46,11 +46,7 @@ var World = {
     whichBall.velocity.x = (Math.random() - 0.5) * 20;
     // Increases the size of the Boxes
     for (i = 0; i < this.boxes.length; i++) {
-      if (this.boxes[i].size >= 100) {
-        this.boxes[i].size = 20;
-      } else {
-        this.boxes[i].size = this.boxes[i].size + 5;
-      }
+      this.boxes[i].size = this.boxes[i].size + 5;
     }
   }
 };
