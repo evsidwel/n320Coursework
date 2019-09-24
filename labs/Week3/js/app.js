@@ -34,24 +34,40 @@ var World = {
   bgcolor: [237, 119, 83],
 
   // Defines the ballBeyond method which accepts a ball input.
-  ballBeyond: function(whichBall) {
+  ballBeyond: function(whichBall, whichBox) {
     // Changes the background color when this funtion is called.
     this.bgcolor = [Math.random() * 255, Math.random() * 255, 83];
     // Resets the passed ball's x position
     whichBall.position.x = 100;
     // Resets the passed ball's x velocity
     whichBall.velocity.x = (Math.random() - 0.5) * 20;
+    // Increases the size of the Box
+    if (whichBox.size >= 300) {
+      whichBox.size = 20;
+    } else {
+      whichBox.size++;
+    }
   }
 };
 
 //class for a box
 //Grows in size every time a ball hits an edge and is reset
-class Box {}
+class Box {
+  constructor() {
+    this.position = { x: 200, y: 150 };
+    this.size = 20;
+  }
+  update() {
+    // Draw the rectangle
+    rect(this.position.x, this.position.y, this.size, this.size);
+  }
+}
 
 // "For fun": multiple balls
 
-var ball = new Ball(100); // Create a new instance of the Ball class called ball
-var ballTwo = new Ball(200);
+var ballOne = new Ball(100); // Create a new instance of the Ball class called ball at yPosition 100
+var ballTwo = new Ball(200); // Create a new instance of the Ball class called ballTwo at yPosition 200
+var box = new Box();
 
 function setup() {
   // P5 application essential
@@ -61,6 +77,6 @@ function setup() {
 function draw() {
   // P5 application essential
   background(World.bgcolor);
-  ball.update();
+  ballOne.update();
   ballTwo.update();
 }
