@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Week 5 - Vue.js</title>
+    <style>
+      body {
+        background: #000;
+      }
+      .student {
+        border-radius: 4px;
+        width: 100px;
+        height: 100px;
+        padding: 3px;
+        background-color: #eee;
+        color: #ef4b4b;
+      }
+      .arrow {
+        cursor: pointer;
+        color: #fff;
+        width: 15px;
+        height: 15px;
+        padding: 5px;
+        margin: 5px;
+        border-radius: 5px;
+        background: #7ecfc0;
+      }
+      .cardActive {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <student-card
+        v-bind:student="currentStudent"
+        v-bind:isactive="cardActive"
+      >
+      </student-card>
+      <div class="arrow" v-on:click="arrowClicked">></div>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
