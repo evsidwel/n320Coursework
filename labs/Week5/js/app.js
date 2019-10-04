@@ -1,8 +1,9 @@
 Vue.component("student-card", {
   props: ["student", "isactive"],
   template:
-    "<div class='student' v-bind:class{cardActive:isactive}>{{student.name}} : {{student.skill}}</div>"
+    "<div class='student' v-bind:class='{ cardActive:isactive, cardOut:!isactive }'>{{ student.name }} : {{ student.skill }}</div>"
 });
+
 var app = new Vue({
   el: "#app",
   data: {
@@ -17,13 +18,43 @@ var app = new Vue({
   },
   methods: {
     arrowClicked: function() {
-      this.curStudentId++;
-      console.log(this.curStudentId);
-      if (this.curStudentId > 2) {
-        this.curStudentId = 0;
-      }
-      this.currentStudent = this.students[this.curStudentId];
       this.cardActive = !this.cardActive;
+
+      setTimeout(() => {
+        //modify the skill of the current student
+        //before moving onward:
+        this.currentStudent.skill++;
+
+        //iteration code
+        this.curStudentId++;
+        this.currentStudent = this.students[this.curStudentId];
+        console.log(this.curStudentId);
+
+        if (this.curStudentId >= this.students.length - 1) {
+          this.curStudentId = -1;
+        }
+
+        //animation trigger
+        this.cardActive = !this.cardActive;
+      }, 300);
+    },
+    backArrowClicked: function() {
+      this.cardActive = !this.cardActive;
+
+      setTimeout(() => {
+        this.curStudentId--;
+        if (this.curStudentId <= -1) {
+          this.curStudentId = this.students.length - 1;
+        }
+        if (this.currentStudent.skill >= 1) {
+          this.currentStudent.skill--;
+        }
+        this.currentStudent = this.students[this.curStudentId];
+
+        console.log(this.curStudentId);
+
+        this.cardActive = !this.cardActive;
+      }, 300);
     }
   }
 });
