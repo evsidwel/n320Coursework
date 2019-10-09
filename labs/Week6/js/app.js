@@ -2,6 +2,7 @@ var app = new Vue({
   el: "#app",
   data: {
     gameOver: false,
+    winner: 0,
     playerTurn: 1,
     grid: [
       [0, 0, 0, 0, 0, 0, 0],
@@ -37,6 +38,76 @@ var app = new Vue({
     checkWin: function() {
       //loop through all columns to check
       //if win found, set over to true
+
+      // Horizontal Win Condition
+      for (var row = 0; row < 6; row++) {
+        for (var col = 0; col < 4; col++) {
+          if (
+            this.checkWinLine(
+              this.grid[row][col],
+              this.grid[row][col + 1],
+              this.grid[row][col + 2],
+              this.grid[row][col + 3]
+            )
+          ) {
+            this.gameOver = true;
+            this.winner = this.grid[row][col];
+          }
+        }
+      }
+      // Vertical Win Condition
+      for (var row = 0; row < 3; row++) {
+        for (var col = 0; col < 7; col++) {
+          if (
+            this.checkWinLine(
+              this.grid[row][col],
+              this.grid[row + 1][col],
+              this.grid[row + 2][col],
+              this.grid[row + 3][col]
+            )
+          ) {
+            this.gameOver = true;
+            this.winner = this.grid[row][col];
+          }
+        }
+      }
+
+      // Diagonal (down to the right) Win Condition
+      for (var row = 0; row < 3; row++) {
+        for (var col = 0; col < 4; col++) {
+          if (
+            this.checkWinLine(
+              this.grid[row][col],
+              this.grid[row + 1][col + 1],
+              this.grid[row + 2][col + 2],
+              this.grid[row + 3][col + 3]
+            )
+          ) {
+            this.gameOver = true;
+            this.winner = this.grid[row][col];
+          }
+        }
+      }
+      // Diagonal (down to the left) Win Condition
+      for (var row = 3; row < 6; row++) {
+        for (var col = 0; col < 4; col++) {
+          if (
+            this.checkWinLine(
+              this.grid[row][col],
+              this.grid[row - 1][col + 1],
+              this.grid[row - 2][col + 2],
+              this.grid[row - 3][col + 3]
+            )
+          ) {
+            this.gameOver = true;
+            this.winner = this.grid[row][col];
+          }
+        }
+      }
+    },
+    checkWinLine: function(a, b, c, d) {
+      // TRUE if all 4 match.
+      return a != 0 && a == b && a == c && a == d;
     },
     lowestMove: function(col) {
       //start at the bottom of a col, loop upwards
