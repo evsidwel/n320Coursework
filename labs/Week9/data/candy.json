@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "type": "top three"
+  },
+  "candy": [
+    {
+      "name": "Kit-Kat",
+      "rating": "good",
+      "chocolate": true,
+      "deliciousness": 70,
+      "types": [
+        "wasabi",
+        "white",
+        "cherry blossom",
+        "dark chocolate",
+        "milk chocolate"
+      ]
+    },
+    {
+      "name": "Air Heads",
+      "rating": "great",
+      "chocolate": false,
+      "deliciousness": 100
+    },
+    {
+      "name": "Sour-Skittles",
+      "rating": "great",
+      "chocolate": false,
+      "deliciousness": 99
+    }
+  ]
+}

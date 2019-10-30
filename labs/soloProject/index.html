@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Checkers - Sidwell</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <main id="checkers">
+      <div v-if="gameOver" class="gOver">
+        Game Over, Player {{ winner }} wins!
+      </div>
+      <div class="gameBoard">
+        <div class="row" v-for="(row, indexR) in board" v-bind:key="row">
+          <div
+            class="cell"
+            v-for="(item, indexC) in row"
+            v-bind:key="item"
+            v-on:click=""
+          ></div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script src="js/checkers.js"></script>
+  </body>
+</html>

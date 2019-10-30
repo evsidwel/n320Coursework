@@ -1,0 +1,94 @@
+Lab is to comment the code:
+We've made a base project structure.
+
+main.js is the main entrypoint for the whole project.
+	it imports Vue from 'vue'
+	it imports App from './App.vue'
+
+we then ran in the terminal
+	>npm install --save vue-router
+
+then in the main.js we type on line 2, below import Vue.
+	import VueRouter from 'vue-router';
+
+in the components folder we create 'Farm.vue'
+in this file we write
+	<template>
+		<div>
+			<div class="farm>
+			</div>
+		</div>
+	</template>
+	<script>
+		export default {name: "Farm"}
+	</script>
+	<style scoped>
+		.farm{display: flex;}
+	</style>
+
+in "Home.vue" we do something similar:
+	<template>
+		<div>
+			HOME
+		</div>
+	</template>
+	<script>
+		export default {name: "Home"}
+	</script>
+	<style scoped>
+
+	</style>
+
+in main.js we type on line 5:
+	Vue.use(VueRouter)
+
+	const router = new VueRouter({
+		routes: [
+			{ path: '/', component: Home },
+			{ path: '/farm', component: Home }
+		]
+	})
+
+then lower in the new Vue block we type before render: h...
+	router,
+
+then we import home and farm at the top of main.js (line 4 and 5):
+	import Home from "./components/Home.vue"
+	import Farm from "./components/Farm.vue"
+
+now we need somewhere to render our routes. in App.vue between the <div id="app"> tags:
+	<router-vue></router-vue>
+
+in Farm.vue between the .farm div:
+	<div v-for="plot in plots">
+		{{ plot }}
+	</div>
+
+in the export of Farm.vue: 
+	data: function(){
+		return{plots: [1,1,1,1]}
+	},
+
+to make sure our data lives outside of page refreshes we create GameData..js
+	export default {
+		money: 4,
+		plots: [
+			{plant: null, stage:null },
+			{plant: null, stage:null },
+			{plant: null, stage:null },
+			{plant: null, stage:null }
+		],
+	}
+
+in Farm.vue we import GameData: line 14, just inside the script tag.
+	import GameData from "../GameData.js"
+
+then we change the data: function becomes:
+	...
+	return {
+		plots: GameData.plots
+	}
+	...
+
+in Farm.vue
+	

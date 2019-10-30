@@ -1,0 +1,24 @@
+{
+  "shapes": [
+    {
+      "name": "circle",
+      "sides": 1,
+      "cool": true
+    },
+    {
+      "name": "triangle",
+      "sides": 3,
+      "cool": true
+    },
+    {
+      "name": "square",
+      "sides": 4,
+      "cool": true
+    },
+    {
+      "name": "pentagon",
+      "sides": 5,
+      "cool": false
+    }
+  ]
+}

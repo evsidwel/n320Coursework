@@ -1,0 +1,19 @@
+#checkers {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.gameBoard {
+  border: 5px solid red;
+}
+.row {
+  border: 1px solid blue;
+  display: flex;
+}
+.cell {
+  border: 1px solid green;
+  width: 50px;
+  height: 50px;
+}
