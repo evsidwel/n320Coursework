@@ -118,7 +118,7 @@ var checkers = new Vue({
               targetCol == this.selectedCol + 1 ||
               targetCol == this.selectedCol - 1
             ) {
-              console.log("simple move");
+              //   console.log("simple move");
               return true;
             } else {
               return false;
@@ -165,7 +165,7 @@ var checkers = new Vue({
               targetCol == this.selectedCol + 1 ||
               targetCol == this.selectedCol - 1
             ) {
-              console.log("simple move");
+              //   console.log("simple move");
               return true;
             } else {
               return false;
@@ -220,22 +220,6 @@ var checkers = new Vue({
       // Replace board with clone.
       this.board = jumpedBoard;
     },
-    // check4Moves: function(){
-    //     switch(this.playerTurn){
-    //         case 1:
-    //             for (row in this.board){
-    //                 for(item in row){
-    //                     if (item == 1){
-    //                         //Check for moves
-    //                         if (this.board[])
-    //                     }
-    //                 }
-    //             }
-    //             break;
-    //         case 2:
-    //             break;
-    //     }
-    // },
     checkWin: function() {
       //Checks if the game has a winner.
       // Game over if a player loses all their pieces.
