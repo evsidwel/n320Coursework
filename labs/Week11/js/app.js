@@ -99,13 +99,14 @@ window.addEventListener("keydown", event => {
   if (selectedMesh) {
     if (event.keyCode == 87) {
       TweenLite.to(selectedMesh.rotation, 0, {
-        x: "+=20",
+        // 20 degrees = .349066 radians
+        x: "+=0.349066",
         onComplete: checkUp
       });
     }
     if (event.keyCode == 83) {
       TweenLite.to(selectedMesh.rotation, 0, {
-        x: "-=20",
+        x: "-=0.349066",
         onComplete: checkUp
       });
     }
