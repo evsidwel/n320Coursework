@@ -4,10 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Mapmaker</title>
+    <title>Checkers - Sidwell</title>
+    <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
-    <script src="js/mapdraw.js"></script>
+    <!-- Main App Gamespace -->
+    <main id="checkers">
+      <!-- Game Over Stuff -->
+      <div v-if="gameOver" class="gOver">
+        Game Over, Player {{ winner }} wins!
+      </div>
+      <!-- ^ End Game Over Stuff ^ -->
+      <!-- v Start Game Stuff v -->
+      <div><button v-on:click="newGame()">New Game</button></div>
+      <!-- ^ End Start Game Stuff ^ -->
+      <!-- v Game Board v -->
+      <div class="gameBoard">
+        <!-- v Row Generation v -->
+        <div class="row" v-for="(row, indexR) in board" v-bind:key="row">
+          <!-- v Column Generation v -->
+          <div v-for="(item, indexC) in row" v-bind:key="item">
+            <!-- v Cell/tile Conditional Coloring v -->
+            <div
+              class="cell"
+              v-if="item>0"
+              v-bind:style="darkBoardStyle"
+              v-on:click="movePiece(indexR, indexC, item)"
+            >
+              <!-- v Gamepiece conditional coloring v -->
+              <div
+                class="piece"
+                v-if="item==1"
+                v-bind:style="redPlayerStyle"
+                v-on:click="selectPiece(indexR, indexC, item)"
+              ></div>
+              <div
+                class="piece"
+                v-else-if="item==2"
+                v-bind:style="whitePlayerStyle"
+                v-on:click="selectPiece(indexR, indexC, item)"
+              ></div>
+              <!-- ^ End Gamepiece conditional coloring ^ -->
+            </div>
+            <div v-else v-bind:style="lightBoardStyle"></div>
+            <!-- ^ End Cell/tile Conditional Coloring ^ -->
+          </div>
+          <!-- ^ End Column Generation ^ -->
+        </div>
+        <!-- ^ End Row Generation ^ -->
+      </div>
+      <!-- ^ End Game Board ^ -->
+    </main>
+    <!-- ^ End Main App Gamespace ^ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script src="js/checkers.js"></script>
   </body>
 </html>
