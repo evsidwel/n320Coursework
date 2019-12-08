@@ -89,9 +89,9 @@ var checkers = new Vue({
         // Modify the clone.
         // Set the old/selected tile to empty
         tempBoard[this.selectedRow][this.selectedCol] = 3;
+
         // Put player's piece in target tile.
         tempBoard[targetRow][targetCol] = this.playerTurn;
-        //remove jumped pieces
 
         // Replace board with clone.
         this.board = tempBoard;
@@ -223,6 +223,17 @@ var checkers = new Vue({
     checkWin: function() {
       //Checks if the game has a winner.
       // Game over if a player loses all their pieces.
+      for (row in this.board) {
+        for (item in row) {
+          let remaining1 = 0;
+          let remaining2 = 0;
+          if (item == 1) {
+            remaining1++;
+          } else if (item == 2) {
+            remaining2++;
+          }
+        }
+      }
       // Game over if a player has no more moves.
     }
   }
